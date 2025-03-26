@@ -111,7 +111,8 @@ def main_cli(input_file: Annotated[Path, typer.Argument(help="Path to the FASTA 
     
     main(input_file, output_file)   
     
-    
+def cli_entrypoint():
+    typer.run(main_cli)
     
 if __name__ == "__main__":
-    typer.run(main_cli)
+    cli_entrypoint()
