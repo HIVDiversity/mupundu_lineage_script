@@ -1,0 +1,12 @@
+[project]
+name = "mupundu-scripts"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jupyter>=1.1.1",
+    "polars>=1.26.0",
+    "rich>=13.9.4",
+    "typer>=0.15.2",
+]
