@@ -45,7 +45,7 @@ def process_read_names(names: list[str]) -> pl.DataFrame:
     df = df.with_columns(
         lineage=pl.col("split_name").list.get(-1),
         timepoint=pl.col("split_name").list.get(2),
-        umi=pl.col("split_name").list.get(-2),
+        umi=pl.col("split_name").list.get(-2).str.slice(5, 8),
     )
 
     all_timepoints = sorted(df["timepoint"].unique().to_list())
@@ -110,9 +110,9 @@ def main_cli(input_file: Annotated[Path, typer.Argument(help="Path to the FASTA 
         logging.warning(f"The output you specified is a {output_file.suffix} file. This won't change the output, we will still write a CSV, but you should consider supplying a CSV file as the output file.")
     
     main(input_file, output_file)   
-    
+
 def cli_entrypoint():
     typer.run(main_cli)
-    
+
 if __name__ == "__main__":
     cli_entrypoint()
