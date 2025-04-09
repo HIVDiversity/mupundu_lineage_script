@@ -61,7 +61,7 @@ def process_read_names(names: list[str]) -> pl.DataFrame:
     )
 
     df = df.with_columns(
-        new_names=pl.col("umi") + "_TP" + pl.col("lineage_num").cast(str)
+        new_names=pl.col("umi") + "_tp" + pl.col("timepoint_num").cast(str)
     )
 
     return df.select(pl.col("new_names", "lineage_num", "lineage"))
